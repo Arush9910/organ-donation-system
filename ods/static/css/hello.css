@@ -1,0 +1,257 @@
+body{
+    padding: 0%;
+    margin:0%;
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+
+}
+.navber {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 0 20px; 
+    height: 70px; 
+    border-bottom: 1px solid lightgray; 
+    background-color: white; 
+}
+.left-nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.right-nav{
+    display: flex;
+    flex-direction: row;
+}
+.rest{
+    height: 85%;
+    width: 100%;
+    background-color: aqua;
+}
+#logo img {
+    height: 40px; 
+    width: auto;
+}
+
+#name {
+    margin-left: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+}
+.right-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px; 
+}
+
+.right-nav div {
+    font-size: 16px;
+    color: black;
+}
+
+#loginbtn {
+    margin-left: 20px;
+}
+
+.login-btn {
+    background-color: red; 
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-btn:hover {
+    background-color: darkred; 
+}
+.quote{
+    margin-top: 100px;
+    height: 100px;
+    font-size:xxx-large;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lemonada', sans-serif;
+    font-weight: 600;
+}
+.quote-section{
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    align-items: center;
+    justify-content: center;
+}
+.q2-buttons{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    
+}
+.white-button, .red-button {
+    background-color: lightgray;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.red-button {
+    background-color: red;
+    color: white;
+}
+
+.info-cards {
+    display: flex;
+    height: 400px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.card {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    flex: 1;
+    max-width: 300px;
+    border: 1px red dashed;
+}
+
+.card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+.pledge-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 50px 0;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+.pledge-card {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    border-radius: 12px;
+    gap: 20px;
+    width: 80%;
+    max-width: 1200px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.card-image {
+    flex-shrink: 0;
+    width: 250px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    text-align: left;
+    width: 100%;
+    justify-content: center;
+    border: red 1px dashed;
+    margin-right: 5%;
+    margin-left: 5%;
+    border-radius: 7px;
+    background-color: #fcf7f7;
+}
+.card-content-left {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    text-align: left;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    border: red 1px dashed;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-radius: 7px;
+    background-color: #fcf7f7;
+
+}
+.card-text{
+    font-size: smaller;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 1005;
+}
+.card-text-left{
+    text-align: left;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 1005;
+}
+
+.card-content h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.card-content p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.pledge-btn {
+    background-color: #ff5656;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.pledge-btn:hover {
+    background-color: #e04b4b;
+}
+.card-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

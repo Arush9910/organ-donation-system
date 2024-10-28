@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/hello.css ' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="navber">
+        <div class="left-nav">
+            <div id="logo"><img src="{% static 'images/logo.png ' %}"/></div>
+        <div id="name">LifeLink</div>
+        </div>
+        <div class="right-nav">
+            <div id="about">About us</div>
+            <div id="about">Contact</div>
+            <div id="loginbtn"><a href="/login" class="login-btn">Login</a></div>
+
+        </div>
+        
+        
+            
+    </div>
+    <div class="quote-section">
+        <div class="quote">
+            Your choice, their future
+        </div>
+        
+        <div class="q2-buttons">
+            
+            <a  href = "/signupd"><button class="white-button" style = "border: 0px;">Pledge as a Donor</button></a>
+            <a  href = "/signupd"><button class="red-button" style = "border: 0px;">Register as a Doctor</button></a>
+        </div>
+    </div>
+    <div class="info-cards">
+        <div class="card">
+            <div class="card-icon">❤️</div>
+            <h3>Why Join?</h3>
+            <p>Join the world's most generous community of organ donors and save lives.</p>
+        </div>
+        
+        <div class="card">
+            <div class="card-icon">📋</div>
+            <h3>How it Works</h3>
+            <p>Complete a simple online registration here in minutes. It's free and secure.</p>
+        </div>
+        
+        <div class="card">
+            <div class="card-icon">💰</div>
+            <h3>Pricing</h3>
+            <p>There is no cost to being an organ donor. The entire process is completely free.</p>
+        </div>
+    </div>
+<div id="page-2" class="pledge-section">
+    <div class="pledge-card">
+        <div class="card-image">
+            <img src="{% static 'images/1.png ' %}" alt="Card Image 1" class="card-img" />
+        </div>
+        
+        <div class="card-content">
+            <div class="card-text">
+                <h3>Be a Lifesaver: Pledge to Donate</h3>
+                <p>You can save up to 8 lives and improve 75 more through tissue donation. Pledge today!</p>
+          
+            </div>
+            
+       <div class ="card-button">
+        <button class="pledge-btn">Pledge now</button>
+
+       </div>     
+        </div>
+    </div>
+    
+    <div class="pledge-card">
+        
+
+        <div class="card-content-left">
+            <div class="card-text-left ">
+            <h3>Doctors, Join the Mission to Save Lives</h3>
+            <p>Help save lives by joining our organ donation network. Become part of the mission!</p>
+            </div>
+            <div class ="card-button">
+                <button class="pledge-btn">Join Now</button>
+        
+               </div>
+            </div>
+        <div class="card-image">
+            <img src="{% static 'images/2.png ' %}" alt="Card Image 1" class="card-img" />
+        </div>
+    </div>
+    <div class="pledge-card">
+        <div class="card-image">
+            <img src="{% static 'images/3.png ' %}" alt="Card Image 1" class="card-img" />
+        </div>
+        
+        <div class="card-content">
+            <div class="card-text">
+                <h3>Patients: Book an Appointment and Seek Help</h3>
+                <p>Need an organ transplant or medical consultation? Book an appointment now!</p>
+          
+            </div>
+            
+       <div class ="card-button">
+        <button class="pledge-btn">Book now</button>
+
+       </div>     
+        </div>
+    </div>
+    
+    
+</div>
+
+</body>
+</html>

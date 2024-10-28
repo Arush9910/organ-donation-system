@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/signupd.css'%}">
+</head>
+<body>
+    <div class="container">
+        <div class="signup-section">
+            <div class="logo">
+                <img src="{% static 'images/logo.png ' %}" alt="Diprella Logo">
+            </div>
+            <h2>Create Your Doctor Account</h2>
+            {% for message in messages%}
+              {{message}}
+            {% endfor %}
+            <form class="signup-form" method = "POST">
+                {% csrf_token %}
+                <p>Name:</p>
+                <input name = "name" type="text" placeholder="Full Name" required>
+                
+                <p>License Number:</p>
+                <input name = "license_no" type="text" placeholder="License Number" required>
+
+                <p>Affiliated Hospital:</p>
+                <input name = "hospital" type="text" placeholder="Hospital Name" required>
+
+                <p>Phone No:</p>
+                <input name = "phone_no" type="text" placeholder="Phone No" required>
+
+                <p>Email:</p>
+                <input name = "email" type="email" placeholder="Email" required>
+
+                <p>Password:</p>
+                <input name = "password" type="password" placeholder="Password" required>
+
+                <p>Date of Birth:</p>
+                <input name = "dob" type="date" required>
+
+                <button  class="sign-up-btn">Sign Up</button>
+            </form>
+        </div>
+        <div class="login-section">
+            <h2>Already Have an Account?</h2>
+            <a href="/login"><button class="sign-in-btn">Login</button></a>
+        </div>
+    </div>
+</body>
+</html>

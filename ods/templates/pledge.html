@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organ Donation Pledge</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/pledge.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="{% static 'images/logo.png' %}" alt="Organ Donation Logo">
+            </div>
+            <h2>Organ Donation</h2>
+            <p>Make a difference today by pledging to donate your organs. It only takes a few minutes to save a life.</p>
+        </div>
+        
+        <div class="pledge-section">
+            <h2>Pledge to Donate Your Organs</h2>
+            
+            <form class="pledge-form">
+                <p>Name:</p>
+                <input name="name" type="text" placeholder="Full Name" required>
+                
+                <p>Address:</p>
+                <input name="address" type="text" placeholder="Your Address" required>
+
+                <p>Pin Code:</p>
+                <input name="pin_code" type="text" placeholder="Pin Code" required>
+
+                <p>Phone No:</p>
+                <input name="phone_no" type="text" placeholder="Phone Number" required>
+
+                <p>Email:</p>
+                <input name="email" type="email" placeholder="Email" required>
+
+                <p>Date of Birth:</p>
+                <input name="dob" type="date" required>
+
+                <p>Age:</p>
+                <input name="age" type="number" placeholder="Age" required>
+
+                <p>Gender:</p>
+                <select name="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <p>Organs You Wish to Donate:</p>
+                <div class="organs-section">
+                    <div class="organs-col">
+                        <input type="checkbox" name="organs" value="all" id="all-organs">
+                        <label for="all-organs">All Organs</label><br>
+
+                        <input type="checkbox" name="organs" value="corneas" id="corneas">
+                        <label for="corneas">Corneas (Eyes)</label><br>
+
+                        <input type="checkbox" name="organs" value="kidneys" id="kidneys">
+                        <label for="kidneys">Kidneys</label><br>
+                    </div>
+                    <div class="organs-col">
+                        <input type="checkbox" name="organs" value="heart" id="heart">
+                        <label for="heart">Heart</label><br>
+
+                        <input type="checkbox" name="organs" value="lungs" id="lungs">
+                        <label for="lungs">Lungs</label><br>
+
+                        <input type="checkbox" name="organs" value="liver" id="liver">
+                        <label for="liver">Liver</label><br>
+                    </div>
+                    <div class="organs-col">
+                        <input type="checkbox" name="organs" value="pancreas" id="pancreas">
+                        <label for="pancreas">Pancreas</label><br>
+
+                        <input type="checkbox" name="organs" value="intestine" id="intestine">
+                        <label for="intestine">Small Intestine</label><br>
+
+                        <input type="checkbox" name="organs" value="skin" id="skin">
+                        <label for="skin">Skin</label><br>
+
+                        <input type="checkbox" name="organs" value="hand" id="hand">
+                        <label for="hand">Hand</label><br>
+                    </div>
+                </div>
+
+                <p class="terms">
+                    <input type="checkbox" name="above_18" id="above-18" required>
+                    <label for="above-18">I confirm that I am above 18 years of age.</label>
+                </p>
+
+                <button type="submit" class="pledge-btn">Pledge</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
