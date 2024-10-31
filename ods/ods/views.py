@@ -29,7 +29,7 @@ def log_in(request):
                         d = Doctor.objects.get(doctor_email = u)
                         return redirect('/doctor')
                     except Doctor.DoesNotExist:
-
+                        
                         ''' NEED TO CHECK FOR DONOR USING ANOTHER EXCEPTINO CATCHING NEED TO MAKE TABLE AND HTMOL FOR THAT'''
                         pass
             else:
@@ -39,9 +39,6 @@ def log_in(request):
 
 
 
-
-
-#loginrequired need to add
 
 
                  
@@ -153,9 +150,125 @@ def about(request):
 def contact(request):
     return render(request,'contact.html')
 
-def profile(request):
-    return render(request,'profile.html')
+def profile(request,type,id):
     
+    if request.method == "POST":
+        img = request.FILES.get('omg')
+        if type == 'Hospital':
+            profile = Hospital.objects.get(id = id)
+            profile.pic = img
+            profile.save()
+        else:
+            profile = Doctor.objects.get(id = id)
+            profile.pic = img
+            profile.save()
+
+    
+    
+    
+    if type == 'Hospital':
+        profile = Hospital.objects.get(id = id)
+        link = f'hospital_dashboard/{id}'
+        profile_info = {'id':id,'type':'Hospital','pic':profile.pic,'Name':profile.name,'Email':profile.hospital_email,'Address':profile.address,'Phone_no':profile.phone_no,'link':link}
         
+    else:
+        print("type")
+        print(type)
+        profile = Doctor.objects.get(id = id)
+        profile_info = {'id':id,'type':'Doctor','pic':profile.pic,'Name':profile.name,'Email':profile.doctor_email,'Address':profile.address,'Phone_no':profile.phone_no}
+    
+    return render(request,'profile.html',context = {'profile_info':profile_info})
+
+
+def profile_edit(request,type,id):
+
+    if request.method == "POST":
+        form_type = request.POST.get('form_type')
+        if form_type == "form1":
+            img = request.FILES.get('omg')
+            if type == 'Hospital':
+              profile = Hospital.objects.get(id = id)
+              profile.pic = img
+              profile.save()
+            else:
+              profile = Doctor.objects.get(id = id)
+              profile.pic = img
+              profile.save()
+
+
+        else:
+            Name = request.POST.get('Name')
+            Email = request.POST.get('Email')
+            Phone_no = request.POST.get('Phone_no')
+            Address = request.POST.get('Address')
+            if type == 'Hospital':
+              profile = Hospital.objects.get(id = id)
+              profile.name = Name
+              print('profile',profile.hospital_email)
+              user = User.objects.get(username = profile.hospital_email)
+              profile.hospital_email = Email
+              user.username = profile.hospital_email
+              user.save()
+              profile.address = Address
+              profile.phone_no = Phone_no
+              profile.save()
+              return redirect(f'/profile/{type}/{id}')
+            else:
+              profile = Doctor.objects.get(id = id)
+              profile.name = Name
+              user = User.objects.get(username = profile.doctor_email)
+
+              profile.doctor_email = Email
+              
+              user.username = profile.doctor_email
+
+              user.save()
+              profile.address = Address
+              profile.phone_no = Phone_no
+              profile.save()
+            
+
+        
+
+
+    if type == 'Hospital':
+        profile = Hospital.objects.get(id = id)
+        link = f'hospital_dashboard/{id}'
+        profile_info = {'id':id,'type':'Hospital','pic':profile.pic,'Name':profile.name,'Email':profile.hospital_email,'Address':profile.address,'Phone_no':profile.phone_no,'link':link}
+        
+    else:
+        profile = Doctor.objects.get(id = id)
+        profile_info = {'id':id,'type':'Doctor','pic':profile.pic,'Name':profile.name,'Email':profile.doctor_email,'Address':profile.address,'Phone_no':profile.phone_no}
+    
+    return render(request,'profile-edit.html',context = {'profile_info':profile_info})
+
+
+def profile_change(request,type,id):
+    if request.method == "POST":
+        Curr = request.POST.get('current_password')
+        new = request.POST.get('new_password')
+        renew = request.POST.get('confirm_password')
+        if type == "Hospital":
+            em = Hospital.objects.get(id = id).hospital_email
+        else:
+            em = Doctor.objects.get(id = id).doctor_email
+
+        user = User.objects.get(username = em)
+        if check_password(Curr,user.password):
+            if new == renew:
+                
+                user.set_password(new)
+                user.save()
+            else:
+                messages.error(request,'Passwords does not match')
+        else:
+            messages.error(request,'Password incorrect')
+
+        
+    
+
+    return render(request,'change-password.html',context = {'id':id,'type':type})
+    
+    
 
 

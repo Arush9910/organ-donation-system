@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -129,6 +130,7 @@
             margin: 5px;
             font-size: 14px;
             transition: all 0.2s ease;
+            width: max-content;
         }
 
         .btn-primary {
@@ -155,6 +157,15 @@
             padding: 12px 0;
             border-bottom: 1px solid #edf2f7;
         }
+        .details-end
+        {
+            display: flex;
+            padding: 12px 0;
+            margin-top: 7px;
+            flex: 1;
+            text-align: right;
+            justify-content: end;
+        }
 
         .details-row:last-child {
             border-bottom: none;
@@ -164,6 +175,9 @@
             flex: 0 0 120px;
             font-weight: bold;
             color: #4a5568;
+            display: flex;
+            align-items: right;
+            flex-direction: row;
         }
 
         .details-value {
@@ -210,20 +224,44 @@
             .nav-links {
                 display: none;
             }
+
+        }
+        
+        .custom-file-input {
+            display: none;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: #ff6b6b;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff4b4b; 
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo-container">
-            <img src="./logo.png" alt="Logo" style="height: 20px;"/>
+        <a class="logo-container" href="/home" style="text-decoration: none;">
+            <img src="{% static 'images/logo.png ' %}" alt="Logo" style="height: 20px;"/>
             <h2 class="brand-name">LifeLink</h2>
-        </div>
+        </a>
         
         <nav class="nav-links">
-            <a href="#" class="nav-link">Home</a>
-            <a href="#" class="nav-link">About</a>
-            <a href="#" class="nav-link">Contact</a>
+            <a href="/home" class="nav-link">Home</a>
+            <a href="/about" class="nav-link">About</a>
+            <a href="/contact" class="nav-link">Contact</a>
         </nav>
         <div class="dropdown-container">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
@@ -234,13 +272,21 @@
     <div class="container">
         <div class="card">
             <div class="profile-header">
-                <img src="user.jpeg" alt="Profile" class="profile-image">
-                <h2 class="profile-name">John Doe</h2>
-                <p class="profile-title">Full Stack Developer</p>
-                <p class="profile-location">Bay Area, San Francisco, CA</p>
+                <img src= "/media/{{profile_info.pic}}" alt="Proile" class="profile-image">
+                <h2 class="profile-name">{{profile_info.Name}}</h2>
+                <p class="profile-title">{{profile_info.type}}</p>
+                <p class="profile-location">{{profile_info.Address}}</p>
                 <div>
-                    <button class="btn btn-primary">Upload Picture</button>
-                    <button class="btn btn-outline">Dashboard</button>
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="file" name="omg" class="custom-file-input" id="fileInput" onchange="this.form.submit();">
+                        
+                        <button type="button" class="btn btn-primary" onclick="document.getElementById('fileInput').click();">
+                            Upload Picture
+                        </button>
+                    </form>
+                    <a href = "/{{profile_info.link}}">
+                    <button class="btn btn-outline">Dashboard</button></a>
                 </div>
             </div>
         </div>
@@ -248,27 +294,27 @@
         <div class="card">
             <div class="details-row">
                 <div class="details-label">Full Name</div>
-                <div class="details-value">Kenneth Valdez</div>
+                <div class="details-value">{{profile_info.Name}}</div>
             </div>
             <div class="details-row">
                 <div class="details-label">Email</div>
-                <div class="details-value">fip@jukmuh.al</div>
+                <div class="details-value">{{profile_info.Email}}</div>
             </div>
             <div class="details-row">
                 <div class="details-label">Phone</div>
-                <div class="details-value">(239) 816-9029</div>
+                <div class="details-value">{{profile_info.Phone_no}}</div>
             </div>
-            <div class="details-row">
-                <div class="details-label">Mobile</div>
-                <div class="details-value">(320) 380-4539</div>
-            </div>
+            
             <div class="details-row">
                 <div class="details-label">Address</div>
-                <div class="details-value">Bay Area, San Francisco, CA</div>
+                <div class="details-value">{{profile_info.Address}}</div>
             </div>
-            <div class="details-row">
+            <div class="details-end">
                 <div class="details-label">
-                    <button class="btn btn-primary">Edit</button>
+
+                    <a href = "/profile_edit/{{profile_info.type}}/{{profile_info.id}}"><button class="btn btn-primary">Edit Details</button></a>
+                    <a href = "/profile_passchange/{{profile_info.type}}/{{profile_info.id}}"><button class="btn btn-outline">Change Password</button></a>
+
                 </div>
             </div>
         </div>

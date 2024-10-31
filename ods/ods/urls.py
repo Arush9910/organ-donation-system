@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
+from django.conf.urls.static import static
+from django.conf import settings
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,8 +35,19 @@ urlpatterns = [
     path('rorgan/<int:id>/<int:organ_id>',views.remove_organ_from_hospital,name="remove_organ_from_hospital"),
     path('contact',views.contact,name = "contact"),
     path('about',views.about,name = "about"),
-    path('profile/<str:type>/<int:id>',views.profile,name = "profile")
+    path('profile/<str:type>/<int:id>',views.profile,name = "profile"),
+    path('profile_edit/<str:type>/<int:id>',views.profile_edit,name = "profile_edit"),
+    path('profile_passchange/<str:type>/<int:id>',views.profile_change,name = "profile_change"),
     
     
     
 ]
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root = settings.MEDIA_ROOT 
+                          
+                          )
+
+urlpatterns += staticfiles_urlpatterns()

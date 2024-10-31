@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -215,14 +216,14 @@
 <body>
     <header>
         <div class="logo-container">
-            <img src="./logo.png" alt="Logo" style="height: 20px;"/>
+            <img src="{% static 'images/logo.png ' %}" alt="Logo" style="height: 20px;"/>
             <h2 class="brand-name">LifeLink</h2>
         </div>
         
         <nav class="nav-links">
-            <a href="#" class="nav-link">Home</a>
-            <a href="#" class="nav-link">About</a>
-            <a href="#" class="nav-link">Contact</a>
+            <a href="/home" class="nav-link">Home</a>
+            <a href="/about" class="nav-link">About</a>
+            <a href="/contact" class="nav-link">Contact</a>
         </nav>
         <div class="dropdown-container">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
@@ -235,64 +236,62 @@
         <div class="card">
             <div class="profile-header">
                 <div class="profile-image-container">
-                    <img src="./user.jpeg" alt="Profile" class="profile-image">
+                    <img src= "/media/{{profile_info.pic}}" alt="Proile" class="profile-image">
                     <label for="profile-image-upload" class="image-upload-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
                             <path d="M208,56H180.28L166.65,35.56A8,8,0,0,0,160,32H96a8,8,0,0,0-6.65,3.56L75.71,56H48A24,24,0,0,0,24,80V192a24,24,0,0,0,24,24H208a24,24,0,0,0,24-24V80A24,24,0,0,0,208,56Zm8,136a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H80a8,8,0,0,0,6.66-3.56L100.28,48h55.43l13.63,20.44A8,8,0,0,0,176,72h32a8,8,0,0,1,8,8ZM128,88a44,44,0,1,0,44,44A44,44,0,0,0,128,88Zm0,72a28,28,0,1,1,28-28A28,28,0,0,1,128,160Z"/>
                         </svg>
                     </label>
-                    <input type="file" id="profile-image-upload" hidden>
+                    <form method = "POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                    <input type = "hidden" name = "form_type" value = "form1" >
+                    <input name = "omg" type="file" id="profile-image-upload" hidden onchange = "this.form.submit()">
+                    </form>
                 </div>
                 <p class="profile-title">Edit Your Profile</p>
             </div>
         </div>
 
         <div class="card">
-            <form id="profile-edit-form">
+            <form id="profile-edit-form" method = "POST" >
+            {% csrf_token %}
+                <input type = "hidden" name = "form_type" value = "form2" >
                 <div class="form-group">
-                    <label class="form-label required" for="fullName">Full Name</label>
-                    <input type="text" id="fullName" class="form-input" value="Kenneth Valdez" required>
+                    <label class="form-label required" for="fullName">full Name</label>
+                    <input name = "Name" type="text" id="fullName" class="form-input" value="{{profile_info.Name}}" required>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label required" for="email">Email</label>
-                    <input type="email" id="email" class="form-input" value="fip@jukmuh.al" required>
+                    <input name = "Email" type="email" id="email" class="form-input" value="{{profile_info.Email}}" required>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-label" for="title">Job Title</label>
-                    <input type="text" id="title" class="form-input" value="Full Stack Developer">
-                </div>
+                
 
                 <div class="form-group">
                     <label class="form-label" for="phone">Phone</label>
-                    <input type="tel" id="phone" class="form-input" value="(239) 816-9029">
+                    <input name = "Phone_no" type="tel" id="phone" class="form-input" value="{{profile_info.Phone_no}}" required>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-label" for="mobile">Mobile</label>
-                    <input type="tel" id="mobile" class="form-input" value="(320) 380-4539">
-                </div>
 
                 <div class="form-group">
                     <label class="form-label" for="address">Address</label>
-                    <input type="text" id="address" class="form-input" value="Bay Area, San Francisco, CA">
+                    <input name = "Address" type="text" id="address" class="form-input" value="{{profile_info.Address}}" required>
                 </div>
 
                 <div class="button-group">
-                    <button type="button" class="btn btn-outline" onclick="window.history.back()">Cancel</button>
+                    <a href = "/profile/{{profile_info.type}}/{{profile_info.id}}"><button type="button" class="btn btn-outline" onclick="window.history.back()">Cancel</button></a>
+
+
                     <button type="submit" class="btn btn-primary">Save Changes</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <script>
-        document.getElementById('profile-edit-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Profile changes saved!');
-            window.history.back();
-        });
-    </script>
+
+
+
+    
 </body>
 </html>

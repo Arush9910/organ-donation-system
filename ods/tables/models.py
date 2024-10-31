@@ -4,8 +4,9 @@ from django.core.validators import EmailValidator
 class Hospital(models.Model):
     hospital_email = models.EmailField(max_length=254, unique=True, validators=[EmailValidator()])  
     name = models.CharField(unique = True,max_length=255) 
-    address = models.CharField(max_length=255, null=True, blank=False)
+    address = models.CharField(max_length=255, null=True, blank=True)
     phone_no = models.CharField(max_length=25, default="Add phone number")
+    pic = models.ImageField(upload_to = "pictures",null=True,blank = True)
 
     def __str__(self):
         return self.name  
@@ -19,6 +20,9 @@ class Doctor(models.Model):
     phone_no = models.CharField(max_length=15)
     dob = models.DateField()
     hospital = models.ForeignKey(Hospital, on_delete=models.SET_NULL, null=True, blank=True)
+    address = models.CharField(max_length=400,null = True , blank=True)
+    pic = models.ImageField(upload_to = "pictures",null=True,blank = True)
+
 
     def __str__(self):
         return self.name
