@@ -1,0 +1,602 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Manrope, "Noto Sans", sans-serif;
+}
+
+body {
+    background-color: #fcf8f8;
+    min-height: 100vh;
+}
+
+
+.main-content {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    padding: 20px 24px;
+    gap: 4px;
+}
+
+.dashboard-content {
+    padding: 24px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* Dashboard Title */
+.dashboard-title {
+    color: #1b0e0e;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 32px;
+    padding: 0;
+}
+
+/* Section Titles */
+.section-title {
+    color: #1b0e0e;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    padding: 0;
+}
+
+/* Quick Actions Section */
+.quick-actions {
+    margin-bottom: 32px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 16px;
+    max-width: none;
+    padding: 0;
+    justify-content: flex-start;
+}
+
+/* Primary Button */
+.btn-primary {
+    background-color: #e61919;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    height: 48px;
+    min-width: 140px;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #d41717;
+}
+
+/* Secondary Button */
+.btn-secondary {
+    background-color: #fff1f1;
+    color: #1b0e0e;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    height: 48px;
+    min-width: 140px;
+    transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: #ffe4e4;
+}
+
+.search-container {
+    padding: 0;
+    margin-top: 16px;
+}
+
+.search-row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+/* Search Input */
+.search-input-wrapper {
+    flex: 1;
+    height: 48px;
+}
+
+.search-input-container {
+    background-color: #fff1f1;
+    border-radius: 8px;
+    height: 48px;
+    transition: background-color 0.2s;
+}
+
+.search-input-container:focus-within {
+    background-color: #ffe4e4;
+}
+
+.search-icon {
+    padding: 0 16px;
+    color: #974e4e;
+}
+
+.search-input {
+    background-color: transparent;
+    height: 100%;
+    font-size: 14px;
+    color: #1b0e0e;
+}
+
+.search-input::placeholder {
+    color: #974e4e;
+}
+
+/* Blood Group Select */
+.blood-group-select {
+    background-color: #fff1f1;
+    border-radius: 8px;
+    height: 48px;
+    min-width: 160px;
+    padding: 0 16px;
+    font-size: 14px;
+    color: #1b0e0e;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.blood-group-select:hover {
+    background-color: #ffe4e4;
+}
+
+/* Search Button */
+.search-btn {
+    background-color: #e61919;
+    color: white;
+    height: 48px;
+    padding: 0 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    min-width: 100px;
+    transition: background-color 0.2s;
+}
+
+.search-btn:hover {
+    background-color: #d41717;
+}
+
+
+.layout-container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    gap: 4px;
+}
+
+/* Dashboard header */
+.dashboard-title {
+    color: #1b0e0e;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.2;
+    min-width: 288px;
+}
+
+/* Quick Actions Section */
+.section-title {
+    color: #1b0e0e;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+}
+
+.quick-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.action-buttons {
+    display: flex;
+    flex: 1;
+    gap: 12px;
+    flex-wrap: wrap;
+    max-width: 480px;
+    justify-content: center;
+}
+
+/* Buttons */
+.btn-primary {
+    display: flex;
+    min-width: 84px;
+    max-width: 480px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    height: 40px;
+    background-color: #e61919;
+    color: #fcf8f8;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: normal;
+    letter-spacing: 0.015em;
+    flex-grow: 1;
+    border: none;
+}
+
+.btn-secondary {
+    display: flex;
+    min-width: 84px;
+    max-width: 480px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    height: 40px;
+    background-color: #f3e7e7;
+    color: #1b0e0e;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: normal;
+    letter-spacing: 0.015em;
+    flex-grow: 1;
+    border: none;
+}
+
+/* Search Section */
+.search-container {
+    padding: 12px 16px;
+}
+
+.search-row {
+    display: flex;
+    gap: 12px;
+}
+
+.search-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-width: 160px;
+    height: 48px;
+    flex-grow: 1;
+}
+
+.search-input-container {
+    display: flex;
+    width: 100%;
+    flex: 1;
+    border-radius: 12px;
+    background-color: #f3e7e7;
+    overflow: hidden;
+}
+
+.search-icon {
+    color: #974e4e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-input {
+    width: 100%;
+    border: none;
+    background-color: #f3e7e7;
+    color: #1b0e0e;
+    font-size: 16px;
+}
+
+.search-input::placeholder {
+    color: #974e4e;
+}
+.dashboard-greeting {
+    font-size: 1.8rem; /* Increase font size for emphasis */
+    font-weight: bold; /* Make the text bold */
+    color: #2c3e50; /* Elegant, dark blue color */
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: inline-block;
+    border-radius: 8px; /* Rounded corners for a smoother look */
+}
+.dashboard h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.table-container {
+    margin-bottom: 30px;
+}
+
+.status-table,
+.appointments-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.status-table th, .appointments-table th, 
+.status-table td, .appointments-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.status-table .accepted {
+    color: green;
+    font-weight: bold;
+}
+
+.status-table .rejected {
+    color: red;
+    font-weight: bold;
+}
+
+.btn {
+    padding: 8px 12px;
+    margin: 0 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.btn.cancel {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn.complete {
+    background-color: #4caf50;
+    color: white;
+}
+
+
+
+
+.search-input:focus {
+    outline: none;
+    ring: none;
+}
+
+/* Blood Group Select */
+.blood-group-select {
+    height: 48px;
+    background-color: #f3e7e7;
+    border: none;
+    border-radius: 12px;
+    color: #974e4e;
+    min-width: 120px;
+    font-size: 16px;
+}
+
+.blood-group-select:focus {
+    outline: none;
+    ring: none;
+}
+
+/* Search Button */
+.search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    height: 48px;
+    background-color: #e61919;
+    color: #fcf8f8;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: normal;
+    letter-spacing: 0.015em;
+    border: none;
+    cursor: pointer;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Inter, "Noto Sans", sans-serif;
+}
+
+body {
+    background-color: #fcf8f8;
+    min-height: 100vh;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensures the header is on top of other elements */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 40px;
+    border-bottom: 1px solid #f3e7e7;
+    background-color: #fcf8f8;
+}
+
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: #1b0e0e;
+}
+
+.logo {
+    width: 16px;
+    height: 16px;
+}
+
+.brand-name {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 36px;
+}
+
+.nav-link {
+    color: #1b0e0e;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+.nav-right{
+    display: flex;
+    flex-direction: row;
+}
+.header-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.icon-button {
+    background-color: #f3e7e7;
+    border: none;
+    border-radius: 9999px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-container {
+    display: flex;
+    padding: 20px 24px;
+    gap: 4px;
+    margin-top: 35px;
+    flex-direction: row;
+}
+
+.sidebar {
+    width: 320px;
+    background-color: #fcf8f8;
+    padding: 16px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    color: #1b0e0e;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.sidebar-link.active {
+    background-color: #f3e7e7;
+    border-radius: 9999px;
+}
+.table-container {
+    width: 100%;
+    margin-top: 32px;
+    border: 1px solid #e7d0d0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px; 
+}
+
+th {
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1b0e0e;
+    background-color: #f3e7e7;
+}
+
+td {
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #974e4e;
+    height: 72px;
+    border-top: 1px solid #e7d0d0;
+}
+
+td:first-child {
+    color: #1b0e0e;
+}
+.dashboard-content {
+    padding: 24px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* Table container width adjustment */
+.table-container {
+    margin-top: 32px;
+    width: 100%; 
+}
+
+/* Search container matching width */
+.search-container {
+    width: 100%;
+}
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 35px;
+    right: 0;
+    background-color: #f3e7e7;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 6px;
+}
+
+.dropdown-menu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-menu a:hover {
+    background-color: #ddd;
+}
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff5656;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ff4646;
+}

@@ -38,6 +38,10 @@ urlpatterns = [
     path('profile/<str:type>/<int:id>',views.profile,name = "profile"),
     path('profile_edit/<str:type>/<int:id>',views.profile_edit,name = "profile_edit"),
     path('profile_passchange/<str:type>/<int:id>',views.profile_change,name = "profile_change"),
+    path('doctor_dashboard/<int:id>',views.doctor_dashboard,name = "doctor_dashboard"),
+    path('delete_appointment/<int:id>/<int:iid>',views.delete_appointment_from_d,name = 'delete_appointment_from_d'),
+    path('appointments/<int:id>',views.appointments_doctor,name = "appointments"),
+    path('appointments_req/<int:id>/<int:iid>/<str:status>',views.appointments_req,name = "appointments_req")
     
     
     

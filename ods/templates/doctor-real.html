@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Hospital</title>
-    <link rel="stylesheet" href="doctor.css">
+    <link rel="stylesheet" href="{% static 'css/doctor.css' %}">
     
     
 </head>
@@ -40,7 +40,7 @@
                 </svg>
                 Dashboard
             </a>
-            <a href="./doctor-appointments.html" class="sidebar-link ">
+            <a href="/appointments/{{id}}" class="sidebar-link ">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
                     <path
                           d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1-7.37-4.89,8,8,0,0,1,0-6.22A8,8,0,0,1,192,112a24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.84,8,57,57,0,0,0-98.16,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"
@@ -74,7 +74,7 @@
                 <div class="dashboard-content">
                     
                     
-                    <h3 class="dashboard-greeting">Dr Arush biju</h3>
+                    <h3 class="dashboard-greeting">{{name}}</h3>
                     
                     <h3 class="section-title">Quick Actions</h3>
                     <div class="quick-actions">
@@ -98,22 +98,24 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                       {% for items in Requests %}
                         <tr>
-                            <td>John Doe</td>
-                            <td>Kidney Donation</td>
-                            <td class="accepted">Accepted</td>
+                            <td>{{items.patient_name}}</td>
+                            <td>{{items.request}}</td>
+                            {%if items.status == "Rejected" %}
+
+                            <td class= "rejected"> {{items.status}}</td>
+
+                            {% else %}
+                            <td class= "accepted"> {{items.status}}</td>
+
+                            {%endif%}
+
                         </tr>
-                        <tr>
-                            <td>Jane Smith</td>
-                            <td>Liver Donation</td>
-                            <td class="rejected">Rejected</td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>Kidney Donation</td>
-                            <td class="accepted">Accepted</td>
-                        </tr>
-                        <!-- Add more rows as needed -->
+
+                        {% endfor %}
+                         
                     </tbody>
                 </table>
             </div>
@@ -125,28 +127,33 @@
                 <table class="appointments-table">
                     <thead>
                         <tr>
+                            <th>S.no</th>
                             <th>Patient Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
                             <th>Appointment Date</th>
+                            <th>Reason</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        {% for items in Appointments %}
+
                         <tr>
-                            <td>Emily Johnson</td>
-                            <td>2024-11-01</td>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{items.patient_name}}</td>
+                            <td>{{items.age}}</td>
+                            <td>{{items.gender}}</td>
+                            <td>{{items.Appointment_date}}</td>
+                            <td>{{items.reason}}</td>
                             <td>
-                                <button class="btn cancel">Cancel</button>
-                                <button class="btn complete">Complete</button>
+                                <a href = "/delete_appointment/{{id}}/{{items.id}}"><button class="btn cancel" >Cancel</button></a>
+                                <a href = "/delete_appointment/{{id}}/{{items.id}}"><button class="btn complete" >Complete</button></a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>Emily Johnson</td>
-                            <td>2024-11-01</td>
-                            <td>
-                                <button class="btn cancel">Cancel</button>
-                                <button class="btn complete">Complete</button>
-                            </td>
-                        </tr>
+
+                        {% endfor%}
+                        
                         <!-- Add more rows as needed -->
                     </tbody>
                 </table>
@@ -154,28 +161,7 @@
         </div>
         
     </div>
-    <script>
-        function toggleDropdown() {
-    var dropdown = document.getElementById("profileDropdown");
-    if (dropdown.style.display === "none") {
-        dropdown.style.display = "block";
-    } else {
-        dropdown.style.display = "none";
-    }
-}
-
-window.addEventListener("click", function(event) {
-    if (!event.target.matches('.icon-button')) {
-        var dropdowns = document.getElementsByClassName("dropdown-menu");
-        for (var i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.style.display === "block") {
-                openDropdown.style.display = "none";
-            }
-        }
-    }
-});
-    </script>
+    
     
 </body>
 </html>

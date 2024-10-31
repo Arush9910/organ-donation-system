@@ -78,6 +78,11 @@ class Organ(models.Model):
         return f"{self.organ_name} from {self.donor_name}"
     
 
+class Request(models.Model):
+    patient_name = models.CharField(max_length = 250)
+    request = models.CharField(max_length = 250)
+    status = models.CharField(max_length = 250)
+    Doctor = models.ForeignKey(Doctor,on_delete=models.SET_NULL,null=True,blank= True)
 
 class Patient(models.Model):
     patient_name = models.CharField(max_length = 250)
@@ -85,4 +90,22 @@ class Patient(models.Model):
     patient_gender = models.CharField(max_length = 150)
     hospital = models.ForeignKey(Hospital,on_delete = models.SET_NULL, null=True,blank = True)
     doctor = models.ForeignKey(Doctor,on_delete = models.SET_NULL,null = True, blank = True)
+
+class Appointments(models.Model):
+    patient_name = models.CharField(max_length= 250)
+    Appointment_date = models.DateField()
+    gender = models.CharField(max_length=250)
+    age = models.PositiveIntegerField()
+    reason = models.CharField(max_length = 600)
+    Doctor = models.ForeignKey(Doctor,on_delete = models.SET_NULL,null = True , blank = True)
+
+
+class Appointments_request(models.Model):
+    patient_name = models.CharField(max_length= 250)
+    Appointment_date = models.DateField()
+    gender = models.CharField(max_length=250)
+    age = models.PositiveIntegerField()
+    reason = models.CharField(max_length = 600)
+    Doctor = models.ForeignKey(Doctor,on_delete = models.SET_NULL,null = True , blank = True)
+    
     

@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Hospital</title>
-    <link rel="stylesheet" href="doctor.css">
+    <link rel="stylesheet" href="{% static 'css/doctor.css' %}">
     
     
 </head>
@@ -82,40 +82,40 @@
                 </div>
             </div>
             <main class="main-content">
-        
                 <div class="table-container">
-                    <table>
+                    <table class="appointments-table">
                         <thead>
                             <tr>
-                                <th>Organ ID</th>
-                                <th>Organ</th>
-                                <th>Donor</th>
-                                <th>Location</th>
-                                
-                                <th>Request</th>
+                                <th>S.no</th>
+                                <th>Patient Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Appointment Date</th>
+                                <th>Reason</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            {% for items in Appointments %}
+    
                             <tr>
-                                <td>P001</td>
-                                <td>Heart</td>
-                                <td>Jane Smith</td>
-                                
-                                <td>LA</td>
+                                <td>{{forloop.counter}}</td>
+                                <td>{{items.patient_name}}</td>
+                                <td>{{items.age}}</td>
+                                <td>{{items.gender}}</td>
+                                <td>{{items.Appointment_date}}</td>
+                                <td>{{items.reason}}</td>
                                 <td>
-                                    <div style="display: flex ; flex-direction: row; gap: 15px;"><button class="btn-secondary">Accept</button><button class="btn-primary">Decline</button></div></td>
+                                    <a href = "/appointments_req/{{id}}/{{items.id}}/YES"><button class="btn complete" >Accept</button></a>
+                                    <a href = "/appointments_req/{{id}}/{{items.id}}/NO"><button class="btn cancel" >Reject</button></a>
+                                </td>
                             </tr>
-                            <tr>
-                                <td>P002</td>
-                                <td>Kidney</td>
-                                <td>John Doe</td>
-                                <td>KL</td>
-                                <td><button class="btn-secondary">Request</button></td>
-                                
-                            </tr>
+    
+                            {% endfor%}
                             
+                            <!-- Add more rows as needed -->
                         </tbody>
-                    </table>
+                    </table>`
                 </div>
                
             </main> 

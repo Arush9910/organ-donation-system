@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
 from django.utils import timezone
-from tables.models import Hospital, Doctor ,Organ ,Patient# Import models explicitly
+from tables.models import Hospital, Doctor ,Organ ,Patient,Appointments,Request,Appointments_request# Import models explicitly
 from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -27,7 +27,7 @@ def log_in(request):
 
                     try:
                         d = Doctor.objects.get(doctor_email = u)
-                        return redirect('/doctor')
+                        return redirect(f'/doctor_dashboard/{d.id}')
                     except Doctor.DoesNotExist:
                         
                         ''' NEED TO CHECK FOR DONOR USING ANOTHER EXCEPTINO CATCHING NEED TO MAKE TABLE AND HTMOL FOR THAT'''
@@ -268,7 +268,52 @@ def profile_change(request,type,id):
     
 
     return render(request,'change-password.html',context = {'id':id,'type':type})
+
+
+def doctor_dashboard(request,id):
+    appointments = Appointments.objects.filter(Doctor = id)
+    name = Doctor.objects.get(id = id).name
+    req = Request.objects.filter(Doctor = id)
+    context = {'id':id,'Appointments':appointments,'Requests':req,'name':name}
+    return render(request,'doctor-real.html',context = context)
+
+def delete_appointment_from_d(request,id,iid):
+    print('id ',id,' iid',iid)
     
+    d = Appointments.objects.get(id = iid)
+    print(d)
+    d.delete()
+    return redirect(f'/doctor_dashboard/{id}')
+    
+
+def appointments_doctor(request,id):
+    appointments = Appointments_request.objects.filter(Doctor = id)
+    name = Doctor.objects.get(id = id).name
+    req = Request.objects.filter(Doctor = id)
+    context = {'id':id,'Appointments':appointments,'Requests':req,'name':name}
+    return render(request,'doctor-appointments.html',context = context)
+
+def appointments_req(request,id,iid,status):
+    if status == 'YES':
+        app_req = Appointments_request.objects.get(id = iid)
+        d = Appointments.objects.create(
+            patient_name = app_req.patient_name,
+            gender = app_req.gender,
+            Appointment_date = app_req.Appointment_date,
+            age = app_req.age,
+            reason = app_req.reason,
+            Doctor = app_req.Doctor
+            )
+        d.save()
+        app_req.delete()
+
+        return redirect(f'/appointments/{id}')
+    else:
+        app_req = Appointments_request.objects.get(id = iid)
+        app_req.delete()
+        return redirect(f'/appointments/{id}')
+
+
     
 
 
