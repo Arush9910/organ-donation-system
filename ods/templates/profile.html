@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            background-color: #fff5f5;
+            color: #2d3748;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            height: 64px;
+            border-bottom: 1px solid #f3e7e7;
+            background-color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: #1b0e0e;
+        }
+
+        .logo {
+            width: 16px;
+            height: 16px;
+        }
+
+        .brand-name {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+        }
+
+        .nav-link {
+            color: #1b0e0e;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .dropdown-container {
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 24px;
+            max-width: 1200px;
+            margin: 84px auto 20px;
+            padding: 0 24px;
+            min-height: calc(100vh - 84px);
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            height: fit-content;
+            padding: 20px;
+        }
+
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        .profile-name {
+            margin: 10px 0;
+            color: #2d3748;
+        }
+
+        .profile-title {
+            color: #718096;
+            margin: 5px 0;
+        }
+
+        .profile-location {
+            color: #718096;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: #ff6b6b;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff5252;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid #ff6b6b;
+            color: #ff6b6b;
+        }
+
+        .btn-outline:hover {
+            background-color: #fff5f5;
+        }
+
+        .details-row {
+            display: flex;
+            padding: 12px 0;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .details-row:last-child {
+            border-bottom: none;
+        }
+
+        .details-label {
+            flex: 0 0 120px;
+            font-weight: bold;
+            color: #4a5568;
+        }
+
+        .details-value {
+            flex: 1;
+            color: #718096;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ff5656;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff4646;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 10px;
+                margin-top: 74px;
+            }
+            
+            .details-row {
+                flex-direction: column;
+            }
+            
+            .details-label {
+                margin-bottom: 5px;
+            }
+
+            header {
+                padding: 0 16px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="./logo.png" alt="Logo" style="height: 20px;"/>
+            <h2 class="brand-name">LifeLink</h2>
+        </div>
+        
+        <nav class="nav-links">
+            <a href="#" class="nav-link">Home</a>
+            <a href="#" class="nav-link">About</a>
+            <a href="#" class="nav-link">Contact</a>
+        </nav>
+        <div class="dropdown-container">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z" />
+            </svg>
+        </div>
+    </header>
+    <div class="container">
+        <div class="card">
+            <div class="profile-header">
+                <img src="user.jpeg" alt="Profile" class="profile-image">
+                <h2 class="profile-name">John Doe</h2>
+                <p class="profile-title">Full Stack Developer</p>
+                <p class="profile-location">Bay Area, San Francisco, CA</p>
+                <div>
+                    <button class="btn btn-primary">Upload Picture</button>
+                    <button class="btn btn-outline">Dashboard</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="details-row">
+                <div class="details-label">Full Name</div>
+                <div class="details-value">Kenneth Valdez</div>
+            </div>
+            <div class="details-row">
+                <div class="details-label">Email</div>
+                <div class="details-value">fip@jukmuh.al</div>
+            </div>
+            <div class="details-row">
+                <div class="details-label">Phone</div>
+                <div class="details-value">(239) 816-9029</div>
+            </div>
+            <div class="details-row">
+                <div class="details-label">Mobile</div>
+                <div class="details-value">(320) 380-4539</div>
+            </div>
+            <div class="details-row">
+                <div class="details-label">Address</div>
+                <div class="details-value">Bay Area, San Francisco, CA</div>
+            </div>
+            <div class="details-row">
+                <div class="details-label">
+                    <button class="btn btn-primary">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

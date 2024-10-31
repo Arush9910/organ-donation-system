@@ -20,7 +20,7 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.home,name = "home"),
+    path('home',views.home,name = "home"),
     path('login',views.log_in,name = "log_in"),
     path('signupd',views.signupd,name = "signupd"),
     path('pledge',views.pledge,name = "pledge"),
@@ -28,7 +28,11 @@ urlpatterns = [
     path('hospital_doctors/<int:id>',views.hospital_doctors,name = "hospital_doctors"),
     path('hospital_organs/<int:id>',views.hospital_organs,name = "hospital_organs"),
     path('hospital_patients/<int:id>',views.hospital_patients,name = "hospital_patients"),
-    path('remove/<int:id>/<str:email>',views.remove_doctor_from_doctor,name="remove_doctor_from_doctor"),
+    path('remove/<int:id>/<str:email>',views.remove_doctor_from_hospital,name="remove_doctor_from_hospital"),
+    path('rorgan/<int:id>/<int:organ_id>',views.remove_organ_from_hospital,name="remove_organ_from_hospital"),
+    path('contact',views.contact,name = "contact"),
+    path('about',views.about,name = "about"),
+    path('profile/<str:type>/<int:id>',views.profile,name = "profile")
     
     
     

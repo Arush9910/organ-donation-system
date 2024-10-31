@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?display=swap&family=Epilogue:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900"
+    />
+    <title>Galileo Design</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Epilogue, "Noto Sans", sans-serif;
+            background-color: white;
+            min-height: 100vh;
+        }
+
+        .navber {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            height: 70px;
+            width: 100%;
+            border-bottom: 1px solid lightgray;
+            background-color: white;
+            position: fixed;
+        }
+        .left-nav {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .right-nav {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+        }
+        #logo img {
+            height: 40px;
+            width: auto;
+        }
+        #name {
+            margin-left: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+        }
+        .login-btn {
+            background-color: #ff4444;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.875rem;
+            transition: background-color 0.2s ease;
+            letter-spacing: 0.015em;
+        }
+        .login-btn:hover {
+            background-color: darkred;
+        }
+
+        .layout-container {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            height: 100%;
+        }
+
+        .main-content {
+            margin-top: 3%;
+            padding: 0 40px;
+            display: flex;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            max-width: 960px;
+            flex: 1;
+        }
+
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            padding: 40px 16px;
+        }
+
+        .hero-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-image: url("https://cdn.usegalileo.ai/sdxl10/00423e89-f50b-4f3c-8768-de3f68794dbc.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 12px;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: left;
+        }
+
+        h1 {
+            color: #181111;
+            font-size: 2.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            letter-spacing: -0.033em;
+        }
+
+        .hero-subtitle {
+            color: #181111;
+            font-size: 1rem;
+            font-weight: normal;
+            line-height: normal;
+        }
+
+        .section-title {
+            color: #181111;
+            font-size: 22px;
+            font-weight: bold;
+            line-height: 1.2;
+            letter-spacing: -0.015em;
+            padding: 20px 16px 12px;
+        }
+
+        .section-text {
+            color: #181111;
+            font-size: 16px;
+            line-height: normal;
+            padding: 4px 16px 12px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
+            gap: 12px;
+            padding: 16px;
+        }
+
+        .team-card {
+            display: flex;
+            flex: 1;
+            gap: 12px;
+            border-radius: 8px;
+            border: 1px solid #e6dbdb;
+            background: white;
+            padding: 16px;
+            flex-direction: column;
+        }
+
+        .team-image {
+            width: 40px;
+            aspect-ratio: 1;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 50%;
+        }
+
+        .team-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .team-name {
+            color: #181111;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .team-role {
+            color: #896161;
+            font-size: 14px;
+            line-height: normal;
+        }
+
+        .contact-button-container {
+            display: flex;
+            padding: 12px 16px;
+            justify-content: flex-end;
+        }
+
+        .contact-button {
+            min-width: 84px;
+            max-width: 480px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            height: 40px;
+            padding: 0 16px;
+            background-color: #ec1313;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: normal;
+            letter-spacing: 0.015em;
+            border: none;
+        }
+
+        @media (min-width: 480px) {
+            .hero-section {
+                gap: 32px;
+            }
+
+            .hero-content {
+                min-width: 400px;
+                gap: 32px;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        @media (min-width: 864px) {
+            .hero-section {
+                flex-direction: row;
+            }
+
+            .hero-content {
+                justify-content: center;
+            }
+        }
+        ::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff5656;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ff4646;
+}
+
+    </style>
+</head>
+<body>
+    <div class="navber">
+        <div class="left-nav">
+            <div id="logo"><img src="./logo.png"/></div>
+        <div id="name">LifeLink</div>
+        </div>
+        <div class="right-nav">
+            <div id="about">About us</div>
+            <div id="about">Contact</div>
+            <div id="loginbtn"><a href="./login.html" class="login-btn">Login</a></div>
+            
+        </div>
+        
+        
+            
+    </div>
+    <div class="layout-container">
+        <div class="main-content">
+            <div class="content-container">
+                <div class="hero-section">
+                    <div class="hero-image"></div>
+                    <div class="hero-content">
+                        <div class="hero-text">
+                            <h1>About LifeLink</h1>
+                            <p class="hero-subtitle">
+                                We are a team of passionate individuals working to save lives by making organ donation easier and more accessible. Our platform connects donors with
+                                recipients, ensuring that organs go to those who need them most.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="section-title">Our Mission</h2>
+                <p class="section-text">
+                    We're on a mission to make organ donation easier and more accessible. We believe that everyone should have the opportunity to save lives, and we're committed to
+                    making that a reality. Our platform connects donors with recipients, ensuring that organs go to those who need them most. By streamlining the process, we can help
+                    more people get the transplants they need to live healthy, fulfilling lives.
+                </p>
+                <h2 class="section-title">Our Team</h2>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-image" style="background-image: url('https://cdn.usegalileo.ai/stability/fb9eac3c-38d1-4c6e-96f5-ba253612b12e.png');"></div>
+                        <div class="team-info">
+                            <h2 class="team-name">Jane Doe</h2>
+                            <p class="team-role">CEO & Co-Founder</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image" style="background-image: url('https://cdn.usegalileo.ai/stability/385839c7-329c-47da-9966-21777a684296.png');"></div>
+                        <div class="team-info">
+                            <h2 class="team-name">John Smith</h2>
+                            <p class="team-role">CTO & Co-Founder</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image" style="background-image: url('https://cdn.usegalileo.ai/stability/2bf3c419-6c93-4ea9-82a5-fe27c44a5109.png');"></div>
+                        <div class="team-info">
+                            <h2 class="team-name">Amanda Johnson</h2>
+                            <p class="team-role">CMO</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image" style="background-image: url('https://cdn.usegalileo.ai/stability/35c49238-3454-4d39-b6b9-a3216f801ed3.png');"></div>
+                        <div class="team-info">
+                            <h2 class="team-name">Michael Brown</h2>
+                            <p class="team-role">CFO</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-button-container">
+                    <button class="contact-button">Contact Us</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
