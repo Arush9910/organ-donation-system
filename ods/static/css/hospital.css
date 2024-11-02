@@ -173,7 +173,17 @@ header {
     cursor: pointer;
     min-width: 84px;
 }
-
+.action-button-2 {
+    background-color: green;
+    color: #fcf8f8;
+    border: none;
+    border-radius: 9999px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    min-width: 84px;
+}
 /* Table styles */
 .table-container {
     border: 1px solid #e7d0d0;

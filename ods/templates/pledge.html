@@ -15,7 +15,8 @@
             </div>
             <h2>Pledge to Donate Life</h2>
             
-            <form class="signup-form">
+            <form method = "POST" class="signup-form">
+                {% csrf_token %}
                 <p>Full Name:</p>
                 <input name="name" type="text" placeholder="Full Name" required>
                 

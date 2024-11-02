@@ -41,7 +41,16 @@ urlpatterns = [
     path('doctor_dashboard/<int:id>',views.doctor_dashboard,name = "doctor_dashboard"),
     path('delete_appointment/<int:id>/<int:iid>',views.delete_appointment_from_d,name = 'delete_appointment_from_d'),
     path('appointments/<int:id>',views.appointments_doctor,name = "appointments"),
-    path('appointments_req/<int:id>/<int:iid>/<str:status>',views.appointments_req,name = "appointments_req")
+    path('appointments_req/<int:id>/<int:iid>/<str:status>',views.appointments_req,name = "appointments_req"),
+    path('doctor_organ_search/<int:id>',views.organ_search,name = "organ_search"),
+    path('doctor_request/<int:doctor_id>/<int:patient_id>/<int:organ_id>',views.doctor_request,name = "doctor_req"),
+    path('doctor_patient_management/<int:doctor_id>',views.patient_management,name = "patient_management"),
+    path('hospital_organ_req/<int:id>',views.hospital_organ_req,name = "hospital_organ_req"),
+    path('hospital_organ_req/status/<int:id>/<str:action>/<int:iid>',views.action,name = "action"),
+    path('appointment_req',views.appointments_req_2,name = "appointment_req"),
+    path('pledge',views.pledge,name = "pledge"),
+    path('',views.reddirect,name = "")
+
     
     
     

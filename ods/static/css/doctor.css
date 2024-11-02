@@ -339,6 +339,10 @@ body {
     color: red;
     font-weight: bold;
 }
+.status-table .pending{
+    color: grey;
+    font-weight: bold;
+}
 
 .btn {
     padding: 8px 12px;

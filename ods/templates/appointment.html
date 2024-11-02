@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Appointment Booking</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fdf6f6;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            background-color: white;
+            border-radius: 30px;
+            box-shadow: 0 15px 30px rgba(255, 86, 86, 0.1);
+            overflow: hidden;
+        }
+
+        .signup-section {
+            padding: 40px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo img {
+            width: 80px;
+            height: 80px;
+            transition: transform 0.3s ease;
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #2d3436;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            color: #636e72;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 25px;
+            border: 2px solid #f0f0f0;
+            border-radius: 15px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background-color: #fafafa;
+        }
+
+        .form-group input:focus {
+            border-color: #ff5656;
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(255, 86, 86, 0.1);
+            outline: none;
+        }
+
+        .gender-group {
+            display: flex;
+            gap: 24px;
+            padding: 10px 0;
+        }
+
+        .gender-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .gender-option input[type="radio"] {
+            accent-color: #ff5656;
+        }
+
+        .gender-option span {
+            color: #636e72;
+            font-size: 14px;
+        }
+
+        .submit-btn {
+            margin-top: 10px;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff5656, #ff7676);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 86, 86, 0.2);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 86, 86, 0.3);
+            background: linear-gradient(135deg, #ff4646, #ff6666);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ff5656;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff4646;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                border-radius: 20px;
+            }
+            
+            .signup-section {
+                padding: 30px 20px;
+            }
+        }
+        /* Existing styles */
+
+.form-group select {
+    width: 100%;
+    padding: 15px 25px;
+    border: 2px solid #f0f0f0;
+    border-radius: 15px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+    appearance: none; 
+}
+
+.form-group select:focus {
+    border-color: #ff5656;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(255, 86, 86, 0.1);
+    outline: none;
+}
+
+
+.form-group select {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path fill="%23636e72" d="M7 10l5 5 5-5H7z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 14px;
+}
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="signup-section">
+            <div class="logo">
+                <img src="{% static 'images/logo.png' %}" alt="Hospital Logo">
+            </div>
+            <h2>Book Your Appointment</h2>
+            {% for message in messages %}
+            <div class = "error"> {{message}}  </div>
+            {% endfor %}
+            
+            <form class="signup-form" method = "POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" name = "FullName" id="fullName" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" name = "Age"id="age" placeholder="Enter your age" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select name="Gender" id="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+
+                <div class="form-group">
+                    <label for="reason">Reason for Visit</label>
+                    <input type="text" name = "ReasonforVisit"id="reason" placeholder="Enter your reason for visit" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="doctor">Doctor Name</label>
+                    <input type="text" name = "DoctorName" id="doctor" placeholder="Enter the Doctor's name" required>
+                </div>
+                <div class="form-group">
+                    <label for="doctor">Date</label>
+                    <input name = "Date" type="date" id="doctor" required>
+                </div>
+                
+                <button type="submit" class="submit-btn">Book Appointment</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

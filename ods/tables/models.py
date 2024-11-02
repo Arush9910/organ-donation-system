@@ -59,13 +59,12 @@ class Donor(models.Model):
     date_of_birth = models.DateField()
     age = models.PositiveIntegerField()
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    organs = models.TextField()
 
     def _str_(self):
         return self.full_name
     
-class parts(models.Model):
-    donor_id=models.ForeignKey(Donor, on_delete=models.SET_NULL, null=True, blank=True)
-    parts=models.CharField(max_length=100)
+
     
 class Organ(models.Model):
     organ_name = models.CharField(max_length=150) 
@@ -73,16 +72,16 @@ class Organ(models.Model):
     donor_age = models.PositiveIntegerField()
     blood_group = models.CharField(max_length=150)
     hospital = models.ForeignKey(Hospital, on_delete=models.SET_NULL, null=True, blank=True)
-
     def _str_(self):
         return f"{self.organ_name} from {self.donor_name}"
     
 
 class Request(models.Model):
     patient_name = models.CharField(max_length = 250)
-    request = models.CharField(max_length = 250)
+    organ = models.ForeignKey(Organ,on_delete=models.SET_NULL,null=True,blank = True)
     status = models.CharField(max_length = 250)
     Doctor = models.ForeignKey(Doctor,on_delete=models.SET_NULL,null=True,blank= True)
+    
 
 class Patient(models.Model):
     patient_name = models.CharField(max_length = 250)
@@ -108,4 +107,5 @@ class Appointments_request(models.Model):
     reason = models.CharField(max_length = 600)
     Doctor = models.ForeignKey(Doctor,on_delete = models.SET_NULL,null = True , blank = True)
     
+
     

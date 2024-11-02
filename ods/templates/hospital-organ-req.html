@@ -3,13 +3,13 @@
 <html>
 <head>
     <title>Hospital</title>
-    <link rel="stylesheet" href="{% static 'css/hospital.css' %}">
+    <link rel="stylesheet" href = "{% static 'css/hospital.css' %}">
     
 </head>
 <body>
     <header>
         <div class="logo-container">
-            <img src="{% static 'images/logo.png' %}" style="height: 20px;"/>
+            <img src="{% static  'images/logo.png' %}" style="height: 20px;"/>
             <h2 class="brand-name">LifeLink</h2>
         </div>
         
@@ -44,7 +44,7 @@
                 </svg>
                 Doctors
             </a>
-            <a href="/hospital_organs/{{id}}" class="sidebar-link active">
+            <a href="/hospital_organs/{{id}}" class="sidebar-link ">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
                     <path
                           d="M178,32c-20.65,0-38.73,8.88-50,23.89C116.73,40.88,98.65,32,78,32A62.07,62.07,0,0,0,16,94c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,220.66,240,164,240,94A62.07,62.07,0,0,0,178,32ZM128,206.8C109.74,196.16,32,147.69,32,94A46.06,46.06,0,0,1,78,48c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,147.61,146.24,196.15,128,206.8Z"
@@ -60,7 +60,7 @@
                 </svg>
                 Patients
             </a>
-            <a href="/hospital_patients/{{id}}" class="sidebar-link ">
+            <a href="/hospital_patients/{{id}}" class="sidebar-link active ">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
                     <path
                           d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z"
@@ -68,42 +68,37 @@
                 </svg>
                 Organ Requests
             </a>
+            
 
         </aside>
 
         <main class="main-content">
             <div class="dashboard-header">
-                <h1 class="dashboard-title">Organs</h1>
+                <h1 class="dashboard-title">Organ Requests</h1>
             </div>
 
             <div class="table-container">
                 <table>
                     <thead>
                         <tr>
-                            <th>S.no</th>
-                            <th>Organ Name</th>
-                            <th>Donor name</th>
-                            <th>Age</th>
-                            <th>Blood group</th>
-                            <th>Remove organ</th>
-                            
+                            <th>Patient name</th>
+                            <th>Organ id</th>
+                            <th>Doctor</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                    
                         {% for items in organ_info %}
                         <tr>
-                            <td>{{forloop.counter}}</td>
-                            <td>{{items.organ_name}}</td>
-                            <td>{{items.donor_name}}</td>
-                            <td>{{items.donor_age}}</td>
-                            <td>{{items.blood_group}}</td>
-                            <td><a href = "/rorgan/{{id}}/{{items.id}}" ><button class = "action-button">Remove</button></a></td>
-                            
+                          <td>{{ items.patient_name }}</td>
+                          <td>{{ items.organ}}</td>
+                          <td>{{ items.Doctor }}</td>
+                          
+                          <td><a href = "/hospital_organ_req/status/{{id}}/Accepted/{{items.id}}" ><button class = "action-button" style = "background-color: limegreen;"> Accept </button></a> <a href = "/hospital_organ_req/status/{{id}}/Rejected/{{items.id}}" ><button class = "action-button"> Decline </button></a></td>
                         </tr>
-                        
-                        {% endfor %}
-                        
-                        
+                      {% endfor %}
+
                     </tbody>
                 </table>
             </div>
