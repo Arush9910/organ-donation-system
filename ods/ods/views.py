@@ -9,6 +9,7 @@ from django.contrib import messages
 from django.shortcuts import redirect, get_object_or_404
 
 def home(request):
+    logout(request)
     return render(request, "hello.html")
 
 def log_in(request):
@@ -29,10 +30,9 @@ def log_in(request):
 
                     try:
                         d = Doctor.objects.get(doctor_email = u)
+                        login(request,user)
                         return redirect(f'/doctor_dashboard/{d.id}')
                     except Doctor.DoesNotExist:
-                        
-                        ''' NEED TO CHECK FOR DONOR USING ANOTHER EXCEPTINO CATCHING NEED TO MAKE TABLE AND HTMOL FOR THAT'''
                         pass
             else:
                 messages.error(request,'Invalid Password')
@@ -180,14 +180,16 @@ def remove_organ_from_hospital(request,id,organ_id):
     return redirect(f'/hospital_organs/{id}')
 
 def about(request):
+    logout(request)
     return render(request,'about.html')
 
 def contact(request):
+    logout(request)
     return render(request,'contact.html')
 
 @login_required
 def profile(request,type,id):
-    #type and id checkk authentication
+    
     
     if request.method == "POST":
         img = request.FILES.get('omg')
@@ -472,7 +474,7 @@ def doctor_request(request, doctor_id, patient_id, organ_id):
     doctor = get_object_or_404(Doctor, id=doctor_id)
     patient = get_object_or_404(Patient, id=patient_id)
     organ = get_object_or_404(Organ, id=organ_id)
-    doctor_info = Doctor.objects.get(id = id)
+    doctor_info = Doctor.objects.get(id = doctor_id)
 
     if not request.user.username == doctor_info.doctor_email:
            messages.error(request, "You do not have permission to access this dashboard.")
@@ -538,7 +540,7 @@ def action(request,action,id,iid):
     org = Request.objects.get(id = iid)
     org.status = action
     org.save()
-    print("editing has occured")
+    
 
     return redirect(f'/hospital_organ_req/{id}')
 
