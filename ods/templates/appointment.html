@@ -24,15 +24,70 @@
 
         .container {
             width: 100%;
-            max-width: 480px;
+            max-width: 800px;
             background-color: white;
             border-radius: 30px;
             box-shadow: 0 15px 30px rgba(255, 86, 86, 0.1);
             overflow: hidden;
+            display: flex;
         }
 
         .signup-section {
             padding: 40px;
+            width: 60%;
+        }
+
+        .side-section {
+            width: 40%;
+            background: linear-gradient(135deg, #ff5656, #ff7676);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: white;
+            position: relative;
+        }
+
+        .back-button {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .back-button:hover {
+            text-decoration: underline;
+        }
+
+        .side-content {
+            text-align: center;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .side-content h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .side-content .action-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .side-content .action-btn:hover {
+            background: white;
+            color: #ff5656;
         }
 
         .logo {
@@ -141,6 +196,48 @@
             transform: translateY(0);
         }
 
+        .form-group select {
+            width: 100%;
+            padding: 15px 25px;
+            border: 2px solid #f0f0f0;
+            border-radius: 15px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background-color: #fafafa;
+            appearance: none;
+        }
+
+        .form-group select:focus {
+            border-color: #ff5656;
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(255, 86, 86, 0.1);
+            outline: none;
+        }
+
+        .form-group select {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path fill="%23636e72" d="M7 10l5 5 5-5H7z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                max-width: 480px;
+            }
+            
+            .signup-section {
+                width: 100%;
+                padding: 30px 20px;
+            }
+            
+            .side-section {
+                width: 100%;
+                padding: 30px 20px;
+            }
+        }
+
         /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -158,45 +255,6 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #ff4646;
         }
-
-        @media (max-width: 480px) {
-            .container {
-                border-radius: 20px;
-            }
-            
-            .signup-section {
-                padding: 30px 20px;
-            }
-        }
-        /* Existing styles */
-
-.form-group select {
-    width: 100%;
-    padding: 15px 25px;
-    border: 2px solid #f0f0f0;
-    border-radius: 15px;
-    font-size: 15px;
-    transition: all 0.3s ease;
-    background-color: #fafafa;
-    appearance: none; 
-}
-
-.form-group select:focus {
-    border-color: #ff5656;
-    background-color: #fff;
-    box-shadow: 0 5px 15px rgba(255, 86, 86, 0.1);
-    outline: none;
-}
-
-
-.form-group select {
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path fill="%23636e72" d="M7 10l5 5 5-5H7z"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 15px center;
-    background-size: 14px;
-}
-
-        
     </style>
 </head>
 <body>
@@ -207,19 +265,19 @@
             </div>
             <h2>Book Your Appointment</h2>
             {% for message in messages %}
-            <div class = "error"> {{message}}  </div>
+            <div class="error"> {{message}} </div>
             {% endfor %}
             
-            <form class="signup-form" method = "POST">
+            <form class="signup-form" method="POST">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="fullName">Full Name</label>
-                    <input type="text" name = "FullName" id="fullName" placeholder="Enter your full name" required>
+                    <input type="text" name="FullName" id="fullName" placeholder="Enter your full name" required>
                 </div>
 
                 <div class="form-group">
                     <label for="age">Age</label>
-                    <input type="number" name = "Age"id="age" placeholder="Enter your age" required>
+                    <input type="number" name="Age" id="age" placeholder="Enter your age" required>
                 </div>
 
                 <div class="form-group">
@@ -231,24 +289,29 @@
                         <option value="Other">Other</option>
                     </select>
                 </div>
-                
 
                 <div class="form-group">
                     <label for="reason">Reason for Visit</label>
-                    <input type="text" name = "ReasonforVisit"id="reason" placeholder="Enter your reason for visit" required>
+                    <input type="text" name="ReasonforVisit" id="reason" placeholder="Enter your reason for visit" required>
                 </div>
 
                 <div class="form-group">
                     <label for="doctor">Doctor Name</label>
-                    <input type="text" name = "DoctorName" id="doctor" placeholder="Enter the Doctor's name" required>
+                    <input type="text" name="DoctorName" id="doctor" placeholder="Enter the Doctor's name" required>
                 </div>
                 <div class="form-group">
                     <label for="doctor">Date</label>
-                    <input name = "Date" type="date" id="doctor" required>
+                    <input name="Date" type="date" id="doctor" required>
                 </div>
                 
                 <button type="submit" class="submit-btn">Book Appointment</button>
             </form>
+        </div>
+        <div class="side-section">
+            <div class="side-content">
+                <h2>Go to Home</h2>
+                <a href="/home" class="action-btn">Home</a>
+            </div>
         </div>
     </div>
 </body>

@@ -90,11 +90,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                    
                         {% for items in organ_info %}
                         <tr>
                           <td>{{ items.patient_name }}</td>
-                          <td>{{ items.organ}}</td>
+                          <td>{{ items.organ.id}}</td>
                           <td>{{ items.Doctor }}</td>
                           
                           <td><a href = "/hospital_organ_req/status/{{id}}/Accepted/{{items.id}}" ><button class = "action-button" style = "background-color: limegreen;"> Accept </button></a> <a href = "/hospital_organ_req/status/{{id}}/Rejected/{{items.id}}" ><button class = "action-button"> Decline </button></a></td>

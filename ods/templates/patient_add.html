@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/signupd.css'%}">
+</head>
+<body>
+    <div class="container">
+        <div class="signup-section">
+            <div class="logo">
+                <img src="{% static 'images/logo.png ' %}" alt="Diprella Logo">
+            </div>
+            <h2>Add organ</h2>
+            {% for message in messages%}
+              {{message}}
+            {% endfor %}
+            <form class="signup-form" method = "POST">
+                {% csrf_token %}
+                <p>Patient name:</p>
+                <input name = "patient_name" type="text" placeholder="Full Name" required>
+                
+                <p>Patient age:</p>
+                <input name = "patient_age" type="number"  required>
+
+                <p>Patient gender:</p>
+                <input name = "patient_gender" type="text"  required>
+
+                <p>Phone No:</p>
+                <input name = "phone_no" type="number" placeholder="Phone No" required>
+
+                <p>Doctor:</p>
+                <input name = "doctor" type = "text" required>
+
+               
+
+                <button  class="sign-up-btn">Add</button>
+            </form>
+            
+        </div>
+        <div class="login-section">
+            <h2>Go back to Dashboard</h2>
+            <a href="/login"><button class="sign-in-btn">Check Status</button></a>
+        </div>
+    </div>
+</body>
+</html>

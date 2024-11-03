@@ -602,6 +602,85 @@ def pledge(request):
 def reddirect(request):
     return redirect('/home')
 
+@login_required
+def patient_add(request,id,type):
+    hospital_info = Hospital.objects.all()
+
+    if type == "Hospital":
+    
+        if not request.user.username == hospital_info.get(id = id).hospital_email:
+           messages.error(request,"You do not have permission to access this dashboard")
+           redirect('/login')
+
+        if request.method == "POST":
+            patient_name = request.POST.get('patient_name')
+            patient_age = request.POST.get('patient_age')
+            patient_gender = request.POST.get('patient_gender')
+            doctor = request.POST.get('doctor')
+            
+            if not  Doctor.objects.filter(name = doctor).exists():
+                messages.error(request,'Please Enter A Valid Doctor Name')
+                return redirect(f'/patient_add/{type}/{int}')
+
+            Patient.objects.create(
+                patient_name = patient_name,
+                patient_age = patient_age,
+                patient_gender = patient_gender,
+                doctor = Doctor.objects.get(name = doctor),
+                hospital = Hospital.objects.get(id = id),
+            )
+
+            return redirect(f'/hospital_dashboard/{id}')
+        
+        return render(request,'patient_add.html',context = {'id':id})
+    
+
+def organ_add(request,id):
+    hospital_info = Hospital.objects.all()
+
+
+    
+    if not request.user.username == hospital_info.get(id = id).hospital_email:
+           messages.error(request,"You do not have permission to access this dashboard")
+           return redirect('/login')
+
+
+
+    if request.method == "POST":
+            organ_name = request.POST.get('organ_name')
+            donor_name = request.POST.get('donor_name')
+            donor_age = request.POST.get('donor_age')
+            blood_group = request.POST.get('blood_group')
+            
+        
+
+            Organ.objects.create(
+                organ_name = organ_name,
+                donor_age = donor_age,
+                donor_name = donor_name,
+                blood_group = blood_group,
+                hospital = Hospital.objects.get(id = id),
+            )
+
+            return redirect(f'/hospital_dashboard/{id}')
+    return render(request,'organ_add.html')
+        
+
+
+
+
+
+
+    
+    
+
+
+
+    
+
+
+    
+
 
 
 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/signupd.css'%}">
+</head>
+<body>
+    <div class="container">
+        <div class="signup-section">
+            <div class="logo">
+                <img src="{% static 'images/logo.png ' %}" alt="Diprella Logo">
+            </div>
+            <h2>Add Organ</h2>
+            {% for message in messages%}
+              {{message}}
+            {% endfor %}
+            <form class="signup-form" method = "POST">
+                {% csrf_token %}
+                <p>organ name:</p>
+                <input name = "organ_name" type="text" placeholder="Full Name" required>
+                
+                <p>donor name:</p>
+                <input name = "donor_name" type="text"  required>
+
+                <p>donor age:</p>
+                <input name = "donor_age" type="age"  required>
+
+                <p>Blood Group:</p>
+                <select name = "blood_group">
+                    <option  name = "blood_group" value = "A+">A+</option>
+                    <option name = "blood_group" value = "B+">B+</option>
+                    <option name = "blood_group"  value = "AB+">AB+</option>
+                    <option name = "blood_group"  value = "O+">O+</option>
+                    <option name = "blood_group" value = "A-">A-</option>
+                    <option name = "blood_group" value = "B-">B-</option>
+                    <option  name = "blood_group" value = "AB-">AB-</option>
+                    <option name = "blood_group" value = "O-">O-</option>
+ 
+
+
+
+
+                </select>
+
+               
+
+                <button  class="sign-up-btn">Add</button>
+            </form>
+            
+        </div>
+        <div class="login-section">
+            <h2>Back to Dashboard</h2>
+            <a href="/login"><button class="sign-in-btn">Check Status</button></a>
+        </div>
+    </div>
+</body>
+</html>
