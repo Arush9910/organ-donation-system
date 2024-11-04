@@ -663,7 +663,7 @@ def organ_add(request,id):
             )
 
             return redirect(f'/hospital_dashboard/{id}')
-    return render(request,'organ_add.html')
+    return render(request,'organ_add.html',context = {'id':id})
         
 
 

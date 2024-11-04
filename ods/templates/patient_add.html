@@ -13,7 +13,7 @@
             <div class="logo">
                 <img src="{% static 'images/logo.png ' %}" alt="Diprella Logo">
             </div>
-            <h2>Add organ</h2>
+            <h2>Add Patient</h2>
             {% for message in messages%}
               {{message}}
             {% endfor %}
@@ -42,7 +42,7 @@
         </div>
         <div class="login-section">
             <h2>Go back to Dashboard</h2>
-            <a href="/login"><button class="sign-in-btn">Check Status</button></a>
+            <a href="/hospital_dashboard/{{id}}"><button class="sign-in-btn">Go Back</button></a>
         </div>
     </div>
 </body>

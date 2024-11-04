@@ -23,6 +23,17 @@ body {
     overflow: hidden;
     position: relative;
 }
+.patient-select-real{
+    height: 48px;
+    background-color: #f3e7e7;
+    border: none;
+    border-radius: 12px;
+    color: #974e4e;
+    font-size: 16px;
+    padding: 0 12px;
+    flex: 1;
+}
+
 
 .signup-section {
     width: 60%;

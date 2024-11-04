@@ -29,7 +29,7 @@
                 <input name = "donor_age" type="age"  required>
 
                 <p>Blood Group:</p>
-                <select name = "blood_group">
+                <select name = "blood_group" class="patient-select-real">
                     <option  name = "blood_group" value = "A+">A+</option>
                     <option name = "blood_group" value = "B+">B+</option>
                     <option name = "blood_group"  value = "AB+">AB+</option>
@@ -53,7 +53,7 @@
         </div>
         <div class="login-section">
             <h2>Back to Dashboard</h2>
-            <a href="/login"><button class="sign-in-btn">Check Status</button></a>
+            <a href="/hospital_dashboard/{{id}}"><button class="sign-in-btn">Go Back</button></a>
         </div>
     </div>
 </body>
